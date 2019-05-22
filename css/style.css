@@ -1,5 +1,7 @@
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -21,7 +23,7 @@ body {
 }
 
 #board {
-    margin: 50px auto 0;
+    margin: 15px auto;
     min-height: 100px;
     min-width: 100px
 }
@@ -32,7 +34,17 @@ body {
 }
 
 .gameStart {
+    margin: 0 auto;
+    border: 1px solid #fff;
+    width: 300px;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 25px;
     text-align: center;
+}
+
+form p {
+    margin: 10px;
 }
 
 .gameStart button {
@@ -42,4 +54,43 @@ body {
 
 .hidden {
     display: none;
+}
+
+#game-set {
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid #fff;
+    padding: 30px;
+    width: 300px;
+    border-radius: 5px;
+    font-family: arial;
+}
+
+#play,
+#pause {
+    border-radius: 5px;
+    width: 80px;
+    background-color: #fff;
+    border: 1px solid #fff;
+    height: 30px;
+    font-weight: 700;
+}
+
+#play:hover,
+#pause:hover {
+    background-color: #ccc;
+}
+
+.gameStart button {
+    background-color: #fff;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    width: 150px;
+    height: 30px;
+    margin-top: 30px;
+    font-weight: 700;
+}
+
+.gameStart button:hover {
+    background-color: #ccc;
 }

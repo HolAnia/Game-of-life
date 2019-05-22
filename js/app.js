@@ -1,14 +1,14 @@
-document.addEventListener("DOMContentLoaded", function() {
-    var width = 0;
-    var height = 0
+document.addEventListener("DOMContentLoaded", () => {
+    let width = 0;
+    let height = 0
 
     document.querySelector(".gameStart button").addEventListener("click", function(event) {
         event.preventDefault();
         width = document.querySelector("#width").value;
         height = document.querySelector("#height").value;
-        console.log(width);
-        console.log(height);
-        var game = new GameOfLife(width, height);
+
+        const game = new GameOfLife(width, height);
+
         game.createBoard();
 
         document.querySelector("#play").addEventListener("click", function() {
@@ -34,13 +34,13 @@ document.addEventListener("DOMContentLoaded", function() {
             this.board.style.width = this.width * 10 + "px";
             this.board.style.height = this.height * 10 + "px";
             this.numberDivs = this.width * this.height;
-            for (var i = 0; i < this.numberDivs; i++) {
-                var newDiv = document.createElement("div");
+            for (let i = 0; i < this.numberDivs; i++) {
+                const newDiv = document.createElement("div");
                 this.board.appendChild(newDiv);
                 this.cells.push(newDiv);
             }
 
-            for (var i = 0; i < this.cells.length; i++) {
+            for (let i = 0; i < this.cells.length; i++) {
                 this.cells[i].addEventListener("mouseover", function() {
                     this.classList.toggle("live");
                 })
@@ -60,10 +60,10 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         this.computeCellNextState = function(x, y) {
-            var neighbors = [];
-            var neighborsLast = [];
-            var cellState = 0;
-            var number = 0;
+            let neighbors = [];
+            let neighborsLast = [];
+            let cellState = 0;
+            let number = 0;
             if (x === 0) {
                 neighbors.push((this.indexNumber(x, (y - 1))));
                 neighbors.push((this.indexNumber((x + 1), (y - 1))));
@@ -87,13 +87,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 neighbors.push((this.indexNumber((x - 1), (y + 1))));
             }
 
-            for (var i = 0; i < neighbors.length; i++) {
+            for (let i = 0; i < neighbors.length; i++) {
                 if (neighbors[i] !== undefined) {
                     neighborsLast.push(neighbors[i]);
                 }
             }
             // console.log(neighborsLast);
-            for (var i = 0; i < neighborsLast.length; i++) {
+            for (let i = 0; i < neighborsLast.length; i++) {
                 if (neighborsLast[i].classList.contains("live")) {
                     number += 1;
                 }
@@ -112,9 +112,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
         }
         this.computeNextGeneration = function() {
-            var nextGeneration = [];
-            for (var i = 0; i < this.height; i++) {
-                for (var j = 0; j < this.width; j++) {
+            let nextGeneration = [];
+            for (let i = 0; i < this.height; i++) {
+                for (let j = 0; j < this.width; j++) {
                     nextGeneration.push(this.computeCellNextState(j, i));
                 }
             }
@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function() {
         this.printNextGeneration = function() {
 
             var nextGeneration = this.computeNextGeneration();
-            for (var i = 0; i < nextGeneration.length; i++) {
+            for (let i = 0; i < nextGeneration.length; i++) {
                 if (nextGeneration[i] === 0) {
                     this.cells[i].classList.remove("live");
                 } else if (nextGeneration[i] === 1) {
